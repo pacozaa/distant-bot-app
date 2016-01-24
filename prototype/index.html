@@ -1,0 +1,118 @@
+<html lang="en" ng-app="StarterApp">
+
+<head>
+  <meta name="viewport" content="initial-scale=1" />
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc1/angular-material.min.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body layout="column" ng-controller="AppController as vm">
+  <div layout="row" layout-align="center center" flex class="container">
+    <div id="left-box" flex="20">
+      <div layout="column">
+        <span class="logo">
+          AUTO CORN PLANT
+        </span>
+        <div layout-padding layout-margin layout="row" layout-align="center center" class="status-label">
+          <div class="status-on">
+          </div>
+          <span class="status-robot" flex>
+            ROBOT
+          </span>
+        </div>
+        <div layout-padding layout-margin layout="row" layout-align="center center" class="status-label">
+          <div class="status-on">
+          </div>
+          <span class="status-gps" flex>
+            GPS
+          </span>
+        </div>
+        <div layout-padding layout-margin layout="row" layout-align="center center" class="status-label">
+          <div class="status-off">
+          </div>
+          <span class="status-mcu" flex>
+            MCU
+          </span>
+        </div>
+        <div layout-padding layout-margin layout="row" layout-align="center center" class="status-label">
+          <div class="status-off">
+          </div>
+          <span class="status-mode" flex>
+            MANUAL MODE
+          </span>
+        </div>
+      </div>
+    </div>
+    <div id="center-box" flex="40">
+      <div layout="column" layout-align="center start">
+        <span class="console-label">AUTOMATIC ROBOT UNDER SINGLE WEB APP_</span>
+        <div ng-cloak class="monitor" flex="80">
+          <md-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="map">
+              <md-content class="md-padding">
+                <h1 class="md-display-1">Map</h1>
+                <div id="mapbox" layout-align="center center">
+                  <div id="gmap" style="position:relative;width: 100%;height: 100%;">
+                  </div>
+                </div>
+              </md-content>
+            </md-tab>
+            </md-tabs>
+          </md-content>
+        </div>
+      </div>
+    </div>
+    <div id="direction-control" layout-align="center center" layout="column" flex>
+        <md-button>
+          <div layout="column" layout-align="center center">
+            <img ng-src="icon/go.png"></img>
+            <span>GO</span>
+          </div>
+        </md-button>
+        <div layout="row" layout-align="center center">
+          <md-button>
+            <div layout="column" layout-align="center center">
+              <img ng-src="icon/left.png"></img>
+              <span>LEFT</span>
+            </div>
+          </md-button>
+          <md-button>
+            <div layout="column" layout-align="center center">
+              <img ng-src="icon/back.png"></img>
+              <span>BACK</span>
+            </div>
+          </md-button>
+          <md-button>
+            <div layout="column" layout-align="center center">
+              <img ng-src="icon/right.png"></img>
+              <span>RIGHT</span>
+            </div>
+          </md-button>
+        </div>
+        <md-button>
+          <div layout="column" layout-align="center center">
+            <img ng-src="icon/start.png"></img>
+            <span>START</span>
+          </div>
+        </md-button>
+        <md-button>
+          <div layout="column" layout-align="center center">
+            <img ng-src="icon/stop.png"></img>
+            <span>STOP</span>
+          </div>
+        </md-button>
+    </div>
+  </div>
+
+  <!-- Angular Material Dependencies -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc1/angular-material.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.6.0/angular-material-icons.min.js"></script>
+  <script src="http://maps.googleapis.com/maps/api/js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
