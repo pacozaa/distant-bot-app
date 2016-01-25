@@ -43,67 +43,110 @@
         </div>
       </div>
     </div>
-    <div id="center-box" flex="40">
+    <div id="center-box" flex="70">
       <div layout="column" layout-align="center start">
         <span class="console-label">AUTOMATIC ROBOT UNDER SINGLE WEB APP_</span>
-        <div ng-cloak class="monitor" flex="80">
-          <md-content>
-            <md-tabs md-dynamic-height md-border-bottom>
-            <md-tab label="map">
-              <md-content class="md-padding">
-                <h1 class="md-display-1">Map</h1>
-                <div id="mapbox" layout-align="center center">
-                  <div id="gmap" style="position:relative;width: 100%;height: 100%;">
-                  </div>
-                </div>
-              </md-content>
-            </md-tab>
-            </md-tabs>
-          </md-content>
+        <div class="monitor" flex="50">
+          <div id="mapbox" layout-align="center center">
+            <div id="gmap" style="position:relative;width: 100%;height: 100%;">
+            </div>
+          </div>
         </div>
+        <div layout="row" layout-align="center center" class="console" flex="30">
+          <div class="wheel" layout="row" layout-align="center center" flex="45">
+              <!-- OUTER SHADOW -->
+              <div class="de">
+                  <!-- TEXT -->
+                  <div class="den">
+                      <!-- LINE -->
+                      <hr class="line">
+                      <hr class="line">
+                      <hr class="line">
+
+                      <!-- SWITCH -->
+                      <div class="switch">
+
+                          <!-- TEXT -->
+                          <label for="switch_off"><span>STATUS</span></label>
+                          <label for="switch_1"><span>MAN</span></label>
+                          <label for="switch_2"><span>SEMI</span></label>
+                          <label for="switch_3"><span>AUTO</span></label>
+                          <label for="switch_4"><span>GP</span></label>
+                          <label for="switch_5"><span>MAP</span></label>
+
+                          <!-- INPUT -->
+                          <input id="switch_off" name="switch" checked type="radio">
+                          <input id="switch_1" name="switch" type="radio">
+                          <input id="switch_2" name="switch" type="radio">
+                          <input id="switch_3" name="switch" type="radio">
+                          <input id="switch_4" name="switch" type="radio">
+                          <input id="switch_5" name="switch" type="radio">
+
+                          <!-- LIGHT -->
+                          <div class="light"><span></span></div>
+
+                          <!-- DOT -->
+                          <div class="dot"><span></span></div>
+
+                          <!-- CENTER -->
+                          <div class="dene">
+                              <div class="denem">
+                                  <div class="deneme">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div id="direction-control" layout-align="start center" layout="column" flex>
+              <div layout="row" layout-align="center center">
+                <md-button>
+                  <div layout="column" layout-align="center center">
+                    <img ng-src="icon/start.png"></img>
+                    <span>START</span>
+                  </div>
+                </md-button>
+                <md-button>
+                  <div layout="column" layout-align="center center">
+                    <img ng-src="icon/go.png"></img>
+                    <span>GO</span>
+                  </div>
+                </md-button>
+                <md-button>
+                  <div layout="column" layout-align="center center">
+                    <img ng-src="icon/stop.png"></img>
+                    <span>STOP</span>
+                  </div>
+                </md-button>
+              </div>
+              <div layout="row" layout-align="center center">
+                <md-button>
+                  <div layout="column" layout-align="center center">
+                    <img ng-src="icon/left.png"></img>
+                    <span>LEFT</span>
+                  </div>
+                </md-button>
+                <md-button>
+                  <div layout="column" layout-align="center center">
+                    <img ng-src="icon/back.png"></img>
+                    <span>BACK</span>
+                  </div>
+                </md-button>
+                <md-button>
+                  <div layout="column" layout-align="center center">
+                    <img ng-src="icon/right.png"></img>
+                    <span>RIGHT</span>
+                  </div>
+                </md-button>
+              </div>
+          </div>
+        </div>
+
       </div>
     </div>
-    <div id="direction-control" layout-align="center center" layout="column" flex>
-        <md-button>
-          <div layout="column" layout-align="center center">
-            <img ng-src="icon/go.png"></img>
-            <span>GO</span>
-          </div>
-        </md-button>
-        <div layout="row" layout-align="center center">
-          <md-button>
-            <div layout="column" layout-align="center center">
-              <img ng-src="icon/left.png"></img>
-              <span>LEFT</span>
-            </div>
-          </md-button>
-          <md-button>
-            <div layout="column" layout-align="center center">
-              <img ng-src="icon/back.png"></img>
-              <span>BACK</span>
-            </div>
-          </md-button>
-          <md-button>
-            <div layout="column" layout-align="center center">
-              <img ng-src="icon/right.png"></img>
-              <span>RIGHT</span>
-            </div>
-          </md-button>
-        </div>
-        <md-button>
-          <div layout="column" layout-align="center center">
-            <img ng-src="icon/start.png"></img>
-            <span>START</span>
-          </div>
-        </md-button>
-        <md-button>
-          <div layout="column" layout-align="center center">
-            <img ng-src="icon/stop.png"></img>
-            <span>STOP</span>
-          </div>
-        </md-button>
-    </div>
-  </div>
+    <div flex></div>
+</div>
 
   <!-- Angular Material Dependencies -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
