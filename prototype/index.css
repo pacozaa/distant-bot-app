@@ -45,6 +45,7 @@ body {
 #center-box {
   height: 100%;
   width:100%;
+  overflow: auto;
 }
 .monitor {
   height: 100%;
