@@ -1,1 +1,2 @@
-ffmpeg -f dshow -i video="Lenovo EasyCamera" -vcodec mpeg4 -tune zerolatency -preset ultrafast -f mpegts udp://localhost:1234/1234
+ffmpeg -f dshow -i video="Lenovo EasyCamera" -vcodec mpeg4 -r 5 -vf scale=320:240 -tune fastdecode -preset ultrafast -f mpegts udp://localhost:1234/1234
+ffmpeg -f dshow -i video="Lenovo EasyCamera" -vcodec mpeg4 -r 5 -vf scale=160:120 -tune zerolatency -preset ultrafast -f mpegts udp://localhost:1234/1234
