@@ -348,7 +348,12 @@
           "version": "0.3.10"
         },
         "temporal": {
-          "version": "0.5.0"
+          "version": "0.5.0",
+          "dependencies": {
+            "es6-shim": {
+              "version": "0.34.4"
+            }
+          }
         },
         "array-includes": {
           "version": "3.0.2",
@@ -1204,84 +1209,22 @@
         }
       }
     },
-    "pixel-getter": {
-      "version": "0.0.5",
+    "lwip": {
+      "version": "0.0.8",
       "dependencies": {
-        "image-type": {
-          "version": "1.0.0",
+        "async": {
+          "version": "0.9.2"
+        },
+        "decree": {
+          "version": "0.0.6",
           "dependencies": {
-            "is-bmp": {
-              "version": "1.0.0"
-            },
-            "is-gif": {
-              "version": "1.0.0"
-            },
-            "is-jpg": {
-              "version": "1.0.0"
-            },
-            "is-jxr": {
-              "version": "1.0.0"
-            },
-            "is-png": {
-              "version": "1.0.0"
-            },
-            "is-psd": {
-              "version": "1.0.0"
-            },
-            "is-tif": {
-              "version": "1.0.0"
-            },
-            "is-webp": {
-              "version": "1.0.0"
+            "lodash-node": {
+              "version": "2.4.1"
             }
           }
         },
-        "jpeg-js": {
-          "version": "0.1.1"
-        },
-        "png-js": {
-          "version": "0.1.1"
-        },
-        "readimage": {
-          "version": "1.1.1",
-          "dependencies": {
-            "buffer-equal": {
-              "version": "0.0.1"
-            },
-            "isnumber": {
-              "version": "1.0.0"
-            },
-            "jpeg-js": {
-              "version": "0.0.4"
-            },
-            "omggif": {
-              "version": "1.0.8"
-            },
-            "pngparse": {
-              "version": "2.0.1"
-            }
-          }
-        },
-        "spidex": {
-          "version": "2.0.5",
-          "dependencies": {
-            "iconv-lite": {
-              "version": "0.2.11"
-            },
-            "urlencode": {
-              "version": "0.2.0",
-              "dependencies": {
-                "utility": {
-                  "version": "0.1.13",
-                  "dependencies": {
-                    "address": {
-                      "version": "1.0.0"
-                    }
-                  }
-                }
-              }
-            }
-          }
+        "nan": {
+          "version": "2.0.9"
         }
       }
     },

@@ -38,12 +38,15 @@
     <div layout="column" layout-align="center start">
       <span class="console-label">AUTOMATIC ROBOT UNDER SINGLE WEB APP_</span>
       <div layout="row" layout-align="center center" flex="50" class="MapVideoContainer">
-        <div flex="60" class="map-container">
+        <div flex class="map-container" ng-hide="missionController.ModeMap">
           <ui-gmap-google-map options="missionController.map.options" center="missionController.map.center" zoom="missionController.map.zoom" flex layout="row">
           </ui-gmap-google-map>
         </div>
-        <div flex="40" class="video-container" layout="row" layout-align="center center">
-          <img data-ng-src="{{missionController.VideoStreamingData}}">
+        <div flex class="video-container" layout="row" layout-align="center center">
+          <img data-ng-src="{{missionController.VideoStreamingData}}" ng-click="missionController.getImagePixel($event)">
+        </div>
+        <div flex class="video-container" layout="row" layout-align="center center">
+          <img data-ng-src="{{missionController.ProcessedImage}}">
         </div>
       </div>
       <div layout="row" layout-align="center center" class="console" flex="30">
@@ -61,12 +64,12 @@
                     <div class="switch">
 
                         <!-- TEXT -->
-                        <label for="switch_off"><span>STATUS</span></label>
-                        <label for="switch_1"><span>MAN</span></label>
-                        <label for="switch_2"><span>SEMI</span></label>
-                        <label for="switch_3"><span>AUTO</span></label>
-                        <label for="switch_4"><span>GP</span></label>
-                        <label for="switch_5"><span>MAP</span></label>
+                        <label for="switch_off" ng-click="missionController.ActiveMode('STATUS')"><span>STATUS</span></label>
+                        <label for="switch_1" ng-click="missionController.ActiveMode('MAN')"><span>MAN</span></label>
+                        <label for="switch_2" ng-click="missionController.ActiveMode('SEMI')"><span>SEMI</span></label>
+                        <label for="switch_3" ng-click="missionController.ActiveMode('AUTO')"><span>AUTO</span></label>
+                        <label for="switch_4" ng-click="missionController.ActiveMode('GP')"><span>GP</span></label>
+                        <label for="switch_5" ng-click="missionController.ActiveMode('MAP')"><span>MAP</span></label>
 
                         <!-- INPUT -->
                         <input id="switch_off" name="switch" checked type="radio">
@@ -95,13 +98,13 @@
         </div>
         <div id="direction-control" layout-align="start center" layout="column" flex>
             <div layout="row" layout-align="center center">
-              <md-button>
+              <md-button ng-click="missionController.ledOn()">
                 <div layout="column" layout-align="center center">
                   <img ng-src="asset/icon/start.png">
                   <span>START</span>
                 </div>
               </md-button>
-              <md-button>
+              <md-button ng-click="missionController.ledOff()">
                 <div layout="column" layout-align="center center">
                   <img ng-src="asset/icon/go.png">
                   <span>GO</span>

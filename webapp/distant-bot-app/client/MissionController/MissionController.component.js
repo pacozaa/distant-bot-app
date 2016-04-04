@@ -9,13 +9,16 @@ angular.module('DistantBot').directive('missionController', function() {
       this.helpers({
         VideoStreamingData: () => {
           return this.getReactively('VideoStreamingData');
+        },
+        ProcessedImage: () => {
+          return this.getReactively('ProcessedImage');
         }
       });
-      // this.autorun({
-      //
-      // });
       Streamy.on('VideoData', setImageData = (d) => {
         this.VideoStreamingData = 'data:image/png;base64,' + this.convertBytesToBase64(d.data);
+      });
+      Streamy.on('ProcessedImage', setImageData = (d) => {
+        this.ProcessedImage = 'data:image/png;base64,' + this.convertBytesToBase64(d.data);
       });
       this.convertBytesToBase64 = (arrayBuffer) => {
         var base64    = '';
@@ -87,6 +90,95 @@ angular.module('DistantBot').directive('missionController', function() {
         zoom: 15,
         events: {}
       };
+
+      this.getImagePixel = (event) => {
+        var offsetX = event.offsetX;
+        var offsetY = event.offsetY;
+        Streamy.emit('ClickPosition', {
+          offsetX:  offsetX,
+          offsetY: offsetY
+        });
+        // you have lots of things to try here, not sure what you want to calculate
+        Streamy.emit('RequestImage', { data: true });
+        console.log(event, offsetX, offsetY);
+      }
+      this.ledOn = () => {
+        Meteor.call('ledOn', (error) => {
+          if(error){
+            console.log('led on error');
+          }
+          else{
+            console.log('led on');
+          }
+        });
+      }
+      this.ledOff = () => {
+        Meteor.call('ledOff', (error) => {
+          if(error){
+            console.log('led off error');
+          }
+          else{
+            console.log('led off');
+          }
+        });
+      }
+      this.ModeStatus = true;
+      this.ModeMan = true;
+      this.ModeSemi = true;
+      this.ModeAuto = true;
+      this.ModeGP = true;
+      this.ModeMap = true;
+      this.ActiveMode = (mode) => {
+        console.log(mode);
+      }
+      this.openMode = (mode) => {
+        switch (mode) {
+          case 'STATUS':
+            this.ModeStatus = true;
+            break;
+          case 'MAN':
+            this.ModeMan = true;
+            break;
+          case 'SEMI':
+            this.ModeSemi = true;
+            break;
+          case 'AUTO':
+            this.ModeAuto = true;
+            break;
+          case 'GP':
+            this.ModeGP = true;
+            break;
+          case 'MAP':
+            this.ModeMap = true;
+            break;
+          default:
+            break;
+        }
+      }
+      this.closeMode = (mode) => {
+        switch (mode) {
+          case 'STATUS':
+            this.ModeStatus = false;
+            break;
+          case 'MAN':
+            this.ModeMan = false;
+            break;
+          case 'SEMI':
+            this.ModeSemi = false;
+            break;
+          case 'AUTO':
+            this.ModeAuto = false;
+            break;
+          case 'GP':
+            this.ModeGP = false;
+            break;
+          case 'MAP':
+            this.ModeMap = false;
+            break;
+          default:
+            break;
+        }
+      }
     }
   }
 });

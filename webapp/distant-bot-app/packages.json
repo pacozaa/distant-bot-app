@@ -1,7 +1,7 @@
 {
   "rtsp-ffmpeg" : "0.0.10",
   "johnny-five" : "0.9.19",
-  "pixel-getter" : "0.0.5",
   "color-convert" : "1.0.0",
-  "jimp" : "0.2.21"
+  "jimp" : "0.2.21",
+  "lwip" : "0.0.8"
 }
