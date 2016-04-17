@@ -5,31 +5,33 @@
         AUTO CORN PLANT
       </span>
       <div layout-padding layout-margin layout="row" layout-align="center center" class="status-label">
-        <div class="status-on">
+        <div ng-class="(missionController.StatusRobot[0].robot ==1)?'status-on':'status-off'">
         </div>
         <span class="status-robot" flex>
           ROBOT
         </span>
       </div>
       <div layout-padding layout-margin layout="row" layout-align="center center" class="status-label">
-        <div class="status-on">
+        <div ng-class="(missionController.StatusRobot[0].gps ==1)?'status-on':'status-off'">
         </div>
         <span class="status-gps" flex>
           GPS
         </span>
       </div>
       <div layout-padding layout-margin layout="row" layout-align="center center" class="status-label">
-        <div class="status-off">
+        <div ng-class="(missionController.StatusRobot[0].mcu ==1)?'status-on':'status-off'">
         </div>
         <span class="status-mcu" flex>
           MCU
         </span>
       </div>
       <div layout-padding layout-margin layout="row" layout-align="center center" class="status-label">
-        <div class="status-off">
+        <div class="status-on">
         </div>
         <span class="status-mode" flex>
-          MANUAL MODE
+          {{(missionController.StatusRobot[0].mode == 0)?'MANUAL':''}}
+          {{(missionController.StatusRobot[0].mode == 1)?'SemiAuto':''}}
+          {{(missionController.StatusRobot[0].mode == 2)?'Auto':''}}
         </span>
       </div>
     </div>
@@ -38,14 +40,14 @@
     <div layout="column" layout-align="center start">
       <span class="console-label">AUTOMATIC ROBOT UNDER SINGLE WEB APP_</span>
       <div layout="row" layout-align="center center" flex="50" class="MapVideoContainer">
-        <div flex class="map-container" ng-hide="missionController.ModeMap">
+        <div flex class="map-container" ng-show="missionController.ModeMap">
           <ui-gmap-google-map options="missionController.map.options" center="missionController.map.center" zoom="missionController.map.zoom" flex layout="row">
           </ui-gmap-google-map>
         </div>
-        <div flex class="video-container" layout="row" layout-align="center center">
+        <div flex class="video-container" layout="row" layout-align="center center" ng-show="missionController.ImageStream">
           <img data-ng-src="{{missionController.VideoStreamingData}}" ng-click="missionController.getImagePixel($event)">
         </div>
-        <div flex class="video-container" layout="row" layout-align="center center">
+        <div flex class="video-container" layout="row" layout-align="center center" ng-show="missionController.ImageProcess">
           <img data-ng-src="{{missionController.ProcessedImage}}">
         </div>
       </div>
@@ -98,19 +100,19 @@
         </div>
         <div id="direction-control" layout-align="start center" layout="column" flex>
             <div layout="row" layout-align="center center">
-              <md-button ng-click="missionController.ledOn()">
+              <md-button ng-click="missionController.startRobot()" aria-label="start">
                 <div layout="column" layout-align="center center">
                   <img ng-src="asset/icon/start.png">
                   <span>START</span>
                 </div>
               </md-button>
-              <md-button ng-click="missionController.ledOff()">
+              <md-button ng-click="missionController.forwardRobot()" aria-label="forward">
                 <div layout="column" layout-align="center center">
                   <img ng-src="asset/icon/go.png">
-                  <span>GO</span>
+                  <span>{{(missionController.StatusRobot[0].mode ==0)?'FORWARD':'GO'}}</span>
                 </div>
               </md-button>
-              <md-button>
+              <md-button ng-click="missionController.stopRobot()" aria-label="stop">
                 <div layout="column" layout-align="center center">
                   <img ng-src="asset/icon/stop.png">
                   <span>STOP</span>
@@ -118,19 +120,19 @@
               </md-button>
             </div>
             <div layout="row" layout-align="center center">
-              <md-button>
+              <md-button aria-label="left" ng-click="missionController.rotateLeftRobot()" ng-show="(missionController.StatusRobot[0].mode == 0)?true:false">
                 <div layout="column" layout-align="center center">
                   <img ng-src="asset/icon/left.png">
                   <span>LEFT</span>
                 </div>
               </md-button>
-              <md-button>
+              <md-button aria-label="back" ng-click="missionController.backwardRobot()" ng-show="(missionController.StatusRobot[0].mode == 0)?true:false">
                 <div layout="column" layout-align="center center">
                   <img ng-src="asset/icon/back.png">
                   <span>BACK</span>
                 </div>
               </md-button>
-              <md-button>
+              <md-button aria-label="right" ng-click="missionController.rotateRightRobot()" ng-show="(missionController.StatusRobot[0].mode == 0)?true:false">
                 <div layout="column" layout-align="center center">
                   <img ng-src="asset/icon/right.png">
                   <span>RIGHT</span>

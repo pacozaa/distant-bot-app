@@ -1,7 +1,7 @@
 {
-  "rtsp-ffmpeg" : "0.0.10",
-  "johnny-five" : "0.9.19",
-  "color-convert" : "1.0.0",
-  "jimp" : "0.2.21",
-  "lwip" : "0.0.8"
+  "rtsp-ffmpeg": "0.0.10",
+  "johnny-five": "0.9.39",
+  "color-convert": "1.0.0",
+  "jimp": "0.2.21",
+  "pid-controller": "1.0.3"
 }

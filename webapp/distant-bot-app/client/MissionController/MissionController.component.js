@@ -6,20 +6,25 @@ angular.module('DistantBot').directive('missionController', function() {
     controller: function ($scope, $reactive, $state, $mdDialog) {
       $reactive(this).attach($scope);
       console.warn = function () {}
+      this.subscribe('map');
+      this.subscribe('status');
       this.helpers({
         VideoStreamingData: () => {
           return this.getReactively('VideoStreamingData');
         },
         ProcessedImage: () => {
           return this.getReactively('ProcessedImage');
+        },
+        StatusRobot: () => {
+          return Status.find({},{limit: 1});
         }
       });
-      Streamy.on('VideoData', setImageData = (d) => {
-        this.VideoStreamingData = 'data:image/png;base64,' + this.convertBytesToBase64(d.data);
-      });
-      Streamy.on('ProcessedImage', setImageData = (d) => {
-        this.ProcessedImage = 'data:image/png;base64,' + this.convertBytesToBase64(d.data);
-      });
+      // Streamy.on('VideoData', setImageData = (d) => {
+      //   this.VideoStreamingData = 'data:image/png;base64,' + this.convertBytesToBase64(d.data);
+      // });
+      // Streamy.on('ProcessedImage', setImageData = (d) => {
+      //   this.ProcessedImage = 'data:image/png;base64,' + this.convertBytesToBase64(d.data);
+      // });
       this.convertBytesToBase64 = (arrayBuffer) => {
         var base64    = '';
         var encodings = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
@@ -102,23 +107,63 @@ angular.module('DistantBot').directive('missionController', function() {
         Streamy.emit('RequestImage', { data: true });
         console.log(event, offsetX, offsetY);
       }
-      this.ledOn = () => {
-        Meteor.call('ledOn', (error) => {
+      this.startRobot = () => {
+        Meteor.call('startRobot', (error) => {
           if(error){
-            console.log('led on error');
+            console.log('startRobot error');
           }
           else{
-            console.log('led on');
+            console.log('startRobot');
           }
         });
       }
-      this.ledOff = () => {
-        Meteor.call('ledOff', (error) => {
+      this.stopRobot = () => {
+        Meteor.call('stopRobot', (error) => {
           if(error){
-            console.log('led off error');
+            console.log('stopRobot error');
           }
           else{
-            console.log('led off');
+            console.log('stopRobot');
+          }
+        });
+      }
+      this.forwardRobot = () => {
+        Meteor.call('forwardRobot', (error) => {
+          if(error){
+            console.log('forwardRobot error');
+          }
+          else{
+            console.log('forwardRobot');
+          }
+        });
+      }
+      this.backwardRobot = () => {
+        Meteor.call('backwardRobot', (error) => {
+          if(error){
+            console.log('backwardRobot error');
+          }
+          else{
+            console.log('backwardRobot');
+          }
+        });
+      }
+      this.rotateLeftRobot = () => {
+        Meteor.call('rotateLeftRobot', (error) => {
+          if(error){
+            console.log('rotateLeftRobot error');
+          }
+          else{
+            console.log('rotateLeftRobot');
+          }
+        });
+      }
+      this.rotateRightRobot = () => {
+        Meteor.call('rotateRightRobot', (error) => {
+          if(error){
+            console.log('rotateRightRobot error');
+          }
+          else{
+            console.log('rotateRightRobot');
           }
         });
       }
@@ -128,8 +173,23 @@ angular.module('DistantBot').directive('missionController', function() {
       this.ModeAuto = true;
       this.ModeGP = true;
       this.ModeMap = true;
+      this.ImageStream = false;
+      this.ImageProcess = false;
       this.ActiveMode = (mode) => {
         console.log(mode);
+        switch (mode) {
+          case 'MAN':
+            Meteor.call('EnableManualMode');
+            break;
+          case 'SEMI':
+            Meteor.call('EnableSemiAutoMode');
+            break;
+          case 'AUTO':
+            Meteor.call('EnableAutoMode');
+            break;
+          default:
+
+        }
       }
       this.openMode = (mode) => {
         switch (mode) {
@@ -150,6 +210,12 @@ angular.module('DistantBot').directive('missionController', function() {
             break;
           case 'MAP':
             this.ModeMap = true;
+            break;
+          case 'ImageStream':
+            this.ImageStream = true;
+            break;
+          case 'ImageProcess':
+            this.ImageProcess = true;
             break;
           default:
             break;
@@ -174,6 +240,12 @@ angular.module('DistantBot').directive('missionController', function() {
             break;
           case 'MAP':
             this.ModeMap = false;
+            break;
+          case 'ImageStream':
+            this.ImageStream = false;
+            break;
+          case 'ImageProcess':
+            this.ImageProcess = false;
             break;
           default:
             break;

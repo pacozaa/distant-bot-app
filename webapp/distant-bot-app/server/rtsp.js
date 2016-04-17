@@ -17,11 +17,11 @@ const RobotCamera = new rtsp.FFMpeg({
   rate: 5
 });
 RobotCamera.on('start', () => {
-  console.log('RobotCamera : start');
+  //console.log('RobotCamera : start');
 });
 
 RobotCamera.on('stop', () => {
-  console.log('RobotCamera : stop');
+  //console.log('RobotCamera : stop');
 });
 
 Streamy.on('ClickPosition',  getClickPosition = (data, socket) => {
@@ -37,12 +37,12 @@ Streamy.on('RequestImage', getRequest = (data, socket) => {
   }
 });
 Streamy.onConnect((socket) => {
-  console.log('onConnect');
+  //console.log('onConnect');
   CurrentSocket = socket;
   RobotCamera.on('data', streamToClient);
 });
 Streamy.onDisconnect((socket) => {
-  console.log('onDisconnect');
+  //console.log('onDisconnect');
   RobotCamera.removeListener('data', streamToClient);
 });
 
