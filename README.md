@@ -112,9 +112,12 @@ distant-bot-app/
    ```
 
 2. **Install Meteor** (if not already installed)
+   
+   Visit [https://www.meteor.com/install](https://www.meteor.com/install) for installation instructions, or use:
    ```bash
    curl https://install.meteor.com/ | sh
    ```
+   Note: Review the installation script before running if you have security concerns.
 
 3. **Install dependencies**
    ```bash
